@@ -32,8 +32,9 @@ sig.dim.perm.scree <- function(data, B=1000, cex=0.7, pos=4, offset=0.5){
   obs.eig <- as.matrix(d[1,])
   obs.eig.to.plot <- melt(obs.eig) #requires reshape2
   perm.p.values <- round(colSums(d[-1,] > d[1,][col(d[-1,])]) / B, 4)
-  plot(obs.eig.to.plot$value, type = "o", ylim = c(0, max.y.lim), xaxt = "n", xlab = "Dimensions", ylab = "Eigenvalue")
-  text(obs.eig.to.plot$value, labels = perm.p.values, cex = cex, pos = pos, offset = offset)
+  perm.pvalues.to.report <- ifelse(perm.p.values < 0.001, "< 0.001", ifelse(perm.p.values < 0.01, "< 0.01", ifelse(perm.p.values < 0.05, "< 0.05", round(perm.p.values, 3))))
+  plot(obs.eig.to.plot$value, type = "o", ylim = c(0, max.y.lim), xaxt = "n", xlab = "Dimensions", ylab = "Eigenvalue", pch=20)
+  text(obs.eig.to.plot$value, labels = perm.pvalues.to.report, cex = cex, pos = pos, offset = offset)
   axis(1, at = 1:table.dim)
   title(main = "Correspondence Analysis: \nscree-plot of observed and permuted eigenvalues", sub = paste0("Black dots=observed eigenvalues; blue dots=95th percentile of the permutated eigenvalues' distribution. Number of permutations: ", B), cex.sub = 0.8)
   par(new = TRUE)
