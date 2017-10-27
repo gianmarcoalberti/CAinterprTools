@@ -1,0 +1,19 @@
+Package: CAinterprTools
+Title: Package for graphical aid in Correspondence Analysis interpretation and
+    significance testing
+Version: 0.14
+Authors@R: "Gianmarco ALberti <gianmarcoalberti@tin.it> <gianmarcoalberti@gmail.com>[aut, cre]"
+Description: A number of interesting packages are available to perform
+    Correspondence Analysis in R. At the best of my knowledge, they lack
+    tools to help users to 'eyeball' aspects that are crucial to the interpretation of the CA results (e.g., contribution
+    of rows/cols categories to the principal axes, quality of the display,
+    correlation of rows/cols categories with dimensions, etc). Besides
+    providing those facilities, this package allows to calculate the
+    significance of the CA dimensions by means of the 'Average Rule', the
+    Malinvaud test, and by permutation tests. It also allows to
+    calculate the permuted significance of the CA total intertia.
+Depends:
+    R (>= 3.1.1),ca,FactoMineR,Hmisc,ggplot2,ggrepel,cluster,RcmdrMisc,reshape2
+License: GPL
+LazyData: true
+RoxygenNote: 6.0.1
