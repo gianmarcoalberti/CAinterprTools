@@ -10,11 +10,13 @@ malinvaud(data)
 \item{data:}{name fo the datset (must be in dataframe format).}
 }
 \description{
-This function allows you to perform the Malinvaud's test, which assesses the significance of the CA dimensions. The function returns both a table in the R console and a plot. The former lists some values, among which the significance of each CA dimension. Dimensions whose p-value is below the 0.05 threshold (displayed in RED in the returned plot) are significant.
+This function allows you to perform the Malinvaud's test, which assesses the significance of the CA dimensions. 
+The function returns both a table in the R console and a plot. The former lists some values, among which the significance of each CA dimension. Dimensions whose p-value is below the 0.05 threshold (displayed in RED in the returned plot) are significant.
 }
 \examples{
 data(greenacre_data)
-malinvaud(greenacre_data)
+malinvaud(greenacre_data) #perform the Malinvaud test using the 'greenacre_data' dataset
+res <- malinvaud(greenacre_data) #perform the Malinvaud test using the 'greenacre_data' dataset and store the output table in a object named 'res'
 
 }
 \keyword{Malinvaud}

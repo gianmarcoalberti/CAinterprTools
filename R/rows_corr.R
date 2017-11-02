@@ -1,9 +1,9 @@
 #' Chart of rows correlation with a selected dimension
 #'
-#' This function allows to calculate the correlation of the row categories with the selected dimension. 
-#' It displays the correlation of the rpw categories with the selected dimension; the parameter sort=TRUE arrange the categories in decreasing order of correlation. 
+#' This function allows to calculate the correlation (sqrt(COS2)) of the row categories with the selected dimension. 
+#' It displays the correlation of the row categories with the selected dimension; the parameter sort=TRUE arrange the categories in decreasing order of correlation. 
 #' At the left-hand side, the categories' labels show a symbol (+ or -) according to which side of the selected dimension they are correlated, either positive or negative. 
-#' At the right-hand side, a legend indicates the column categories' contribution to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. 
+#' At the right-hand side, a legend indicates the column categories' contribution (in permills) to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. 
 #' Further, an asterisk (*) flags the categories which can be considered major contributors to the definition of the dimension.
 #' @param data: name of the dataset (must be in dataframe format).
 #' @param x: dimension for which the row categories correlation is returned (1st dimension by default).

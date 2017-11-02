@@ -16,7 +16,7 @@ cols.corr.scatter(data, x = 1, y = 2, cex.labls = 3)
 \item{cex.labls:}{adjust the size of the categories' labels}
 }
 \description{
-This function allows to plot a scatterplot of the correlation of column categories with two selected dimensions. A diagonal line (in BLACK) is a visual aid to eyeball whether a category is actually more correlated (in relative terms) to either of the two dimensions.
+This function allows to plot a scatterplot of the correlation (sqrt(COS2)) of column categories with two selected dimensions. A diagonal line (in BLACK) is a visual aid to eyeball whether a category is actually more correlated (in relative terms) to either of the two dimensions.
 The column categories' labels are coupled with two + or - symbols within round brackets indicating to which side of the two selected dimensions the correlation values that can be read off from the chart are actually referring. 
 The first symbol (i.e., the one to the left), either + or -, refers to the first of the selected dimensions (i.e., the one reported on the x-axis). The second symbol (i.e., the one to the right) refers to the second of the selected dimensions (i.e., the one reported on the y-axis).
 }

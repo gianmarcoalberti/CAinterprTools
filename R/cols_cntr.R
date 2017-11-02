@@ -5,7 +5,7 @@
 #' The parameter cti=TRUE specifies that the categories' contribution to the total inertia is also shown (hollow circle). 
 #' The parameter sort=TRUE sorts the categories in descending order of contribution to the inertia of the selected dimension. 
 #' At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. 
-#' At the right-hand side, a legend reports the correlation of the row categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each row category is correlated.
+#' At the right-hand side, a legend reports the correlation (sqrt(COS2)) of the row categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each row category is correlated.
 #' @param data: name of the dataset (must be in dataframe format).
 #' @param x: dimension for which the column categories contribution is returned (1st dimension by default).
 #' @param cti: logical value (TRUE/FALSE) which specifies if the contribution to the total inertia must be displayed as well (FALSE by default).

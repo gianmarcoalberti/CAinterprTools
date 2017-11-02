@@ -1,6 +1,6 @@
 #' Scatterplot for row categories correlation with dimensions
 #'
-#' This function allows to plot a scatterplot of the correlation of row categories with two selected dimensions. A diagonal line (in BLACK) is a visual aid to eyeball whether a category is actually more correlated (in relative terms) to either of the two dimensions.
+#' This function allows to plot a scatterplot of the correlation (sqrt(COS2)) of row categories with two selected dimensions. A diagonal line (in BLACK) is a visual aid to eyeball whether a category is actually more correlated (in relative terms) to either of the two dimensions.
 #' The row categories' labels are coupled with two + or - symbols within round brackets indicating to which side of the two selected dimensions the correlation values that can be read off from the chart are actually referring. 
 #' The first symbol (i.e., the one to the left), either + or -, refers to the first of the selected dimensions (i.e., the one reported on the x-axis). The second symbol (i.e., the one to the right) refers to the second of the selected dimensions (i.e., the one reported on the y-axis). 
 #' @param data: name of the dataset (must be in dataframe format).
@@ -27,6 +27,6 @@ rows.corr.scatter <- function (data, x = 1, y = 2, cex.labls=3) {
   dfr$labels.final <- paste0(dfr$lab, " (",dfr$labels1,",",dfr$labels2, ")")
   p <- ggplot(dfr, aes(x = corr1, y = corr2)) + geom_point(alpha = 0.8) + 
     scale_y_continuous(limit = c(0, 1)) + scale_x_continuous(limit = c(0,1)) + geom_abline(intercept = 0, slope = 1) + theme(panel.background = element_rect(fill="white", colour="black")) + 
-    geom_text_repel(data = dfr, aes(label = labels.final), size = cex.labls) + labs(x = paste("Row categories' correlation with Dim",x), y = paste("Row categories' correlation with Dim",y))
+    geom_text_repel(data = dfr, aes(label = labels.final), size = cex.labls) + labs(x = paste("Row categories' correlation with Dim.",x), y = paste("Row categories' correlation with Dim.",y))
   return(p)
 }

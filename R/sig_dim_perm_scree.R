@@ -40,5 +40,5 @@ sig.dim.perm.scree <- function(data, B=1000, cex=0.7, pos=4, offset=0.5){
   par(new = TRUE)
   percentile.to.plot <- melt(target.percent)
   plot(percentile.to.plot$value, type = "o", lty = 2, col = "blue", ylim = c(0, max.y.lim), xaxt = "n", xlab = "", ylab = "", sub = "")
-  return(d)
+  #return(d)
 }
