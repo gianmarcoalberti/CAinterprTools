@@ -108,7 +108,6 @@ cols.corr(greenacre_data,1)
 cols.corr.scatter(greenacre_data,1,2)
 ```
 
-
 **Plotting facilities**
 
 `ca.plus()`: plots Correspondence Analysis scatterplots modified to help interpreting the analysis' results. In particular, the function aims at making easier to understand in the same visual context (a) which (say, column) categories are actually contributing to the definition of given pairs of dimensions, and (b) to eyeball which (say, row) categories are more correlated to which dimension:
@@ -183,8 +182,7 @@ ca.cluster(fire_loss, which="rows", opt.part=TRUE)
 [![Rplot01.jpg](https://s1.postimg.org/1v2jhduthb/Rplot01.jpg)](https://postimg.org/image/1kfpo8flbv/)
 
 [![Rplot02.jpg](https://s1.postimg.org/8yaex02tmn/Rplot02.jpg)](https://postimg.org/image/95dmsfoz23/)
-
-*Further info and Disclaimer*: 
+Further info and Disclaimer about the `ca.cluster()` function: 
 
 The silhouette plot is obtained from the `silhouette()` function out from the `cluster` package. For a detailed description of the silhouette plot, its rationale, and its interpretation, see:
 
@@ -198,10 +196,7 @@ For the idea of clustering categories on the basis of the CA coordinates from a 
 Please note that the interpretation of the clustering when both row AND column categories are used must procede with caution due to the issue of inter-class points' distance interpretation. For a full description of the issue (also with further references), see:
 
 * Greenacre M. 2007. *Correspondence Analysis in Practice*, Boca Raton-London-New York, Chapman&Hall/CRC, 267-268.
-```r
-res <- ca.cluster(greenacre_data, which="rows", dim=3, opt.part=TRUE)
-#displays a dendrogram for row categories, with rectangles indicating the clusters defined by the optimal partition method. The clustering is based on a space of dimensionality 3. A silhouette plot, a scatterplot, and a CA scatterplot with indication of cluster membership are also produced. The cluster membership is stored in the object 'res'.
-```
+
 
 <br><br>
 ## History
