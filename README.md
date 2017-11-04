@@ -146,10 +146,12 @@ ca.plot(greenacre_data,1,2,cntr="columns")
 [![image.jpg](https://s1.postimg.org/3nitnj40bz/image.jpg)](https://postimg.org/image/92hc5yj5pn/)
 
 <br><br>
-`ca.cluster()`: plots the result of cluster analysis performed on the results of Correspondence Analysis, and to plot a dendrogram, a silouette plot depicting the "quality" of the clustering solution, and a scatterplot with points coded according to the cluster membership. `ca.cluster()` provides the facility to perform hierarchical cluster analysis of row and/or column categories on the basis of Correspondence Analysis result. The clustering is based on the row and/or colum categories' coordinates from: 
-(1) a high-dimensional space corresponding to the whole dimensionality of the input contingency table; 
-(2) a high-dimensional space of dimensionality smaller than the full dimensionality of the input dataset; 
-(3) a bi-dimensional space defined by a pair of user-defined dimensions. 
+`ca.cluster()`: plots the result of cluster analysis performed on the results of Correspondence Analysis, and to plot a dendrogram, a silouette plot depicting the "quality" of the clustering solution, and a scatterplot with points coded according to the cluster membership. `ca.cluster()` provides the facility to perform hierarchical cluster analysis of row and/or column categories on the basis of Correspondence Analysis result. The clustering is based on the row and/or colum categories' coordinates from:
+
+* (1) a high-dimensional space corresponding to the whole dimensionality of the input contingency table; 
+* (2) a high-dimensional space of dimensionality smaller than the full dimensionality of the input dataset; 
+* (3) a bi-dimensional space defined by a pair of user-defined dimensions. 
+
 To obtain (1), the `dim` parameter must be left in its default value (`NULL`); 
 To obtain (2), the `dim` parameter must be given an integer (needless to say, smaller than the full dimensionality of the input data); 
 To obtain (3), the `dim` parameter must be given a vector (e.g., c(1,3)) specifying the dimensions the user is interested in.
@@ -157,36 +159,40 @@ To obtain (3), the `dim` parameter must be given a vector (e.g., c(1,3)) specify
 The method by which the distance is calculated is specified using the `dist.meth` parameter, while the agglomerative method is speficied using the `aggl.meth` parameter. By default, they are set to `euclidean` and `ward.D2` respectively.
 
 The user may want to specify beforehand the desired number of clusters (i.e., the cluster solution). This is accomplished feeding an integer into the 'part' parameter. A dendrogram (with rectangles indicating the clustering solution), a silhouette plot (indicating the "quality" of the cluster solution), and a CA scatterplot (with points given colours on the basis of their cluster membership) are returned. Please note that, when a high-dimensional space is selected, the scatterplot will use the first 2 CA dimensions; the user must keep in mind that the clustering based on a higher-dimensional space may not be well reflected on the subspace defined by the first two dimensions only.
-Also note: 
--if both row and column categories are subject to the clustering, the column categories will be flagged by an asterisk (*) in the dendrogram (and in the silhouette plot) just to make it easier to identify rows and columns; 
--the silhouette plot displays the average silhouette width as a dashed vertical line; the dimensionality of the CA space used is reported in the plot's title; if a pair of dimensions has been used, the individual dimensions are reported in the plot's title; 
--the silhouette plot's labels end with a number indicating the cluster to which each category is closer.
 
-An optimal clustering solution can be obtained setting the 'opt.part' parameter to TRUE. The optimal partition is selected by means of an iterative routine which locates at which cluster solution the highest average silhouette width is achieved. If the `opt.part` parameter is set to TRUE, an additional plot is returned along with the silhouette plot. It displays a scatterplot in which the cluster solution (x-axis) is plotted against the average silhouette width (y-axis). A vertical reference line indicate the cluster solution which maximize the silhouette width, corresponding to the suggested optimal partition.
+Also note:
+
+* if both row and column categories are subject to the clustering, the column categories will be flagged by an asterisk (*) in the dendrogram (and in the silhouette plot) just to make it easier to identify rows and columns;
+
+* the silhouette plot displays the average silhouette width as a dashed vertical line; the dimensionality of the CA space used is reported in the plot's title; if a pair of dimensions has been used, the individual dimensions are reported in the plot's title;
+
+* the silhouette plot's labels end with a number indicating the cluster to which each category is closer.
+
+An optimal clustering solution can be obtained setting the `opt.part` parameter to `TRUE`. The optimal partition is selected by means of an iterative routine which locates at which cluster solution the highest average silhouette width is achieved. If the `opt.part` parameter is set to TRUE, an additional plot is returned along with the silhouette plot. It displays a scatterplot in which the cluster solution (x-axis) is plotted against the average silhouette width (y-axis). A vertical reference line indicate the cluster solution which maximize the silhouette width, corresponding to the suggested optimal partition.
 
 The function returns a list storing information about the cluster membership (i.e., which categories belong to which cluster).
 
 *Further info and Disclaimer*: 
 
-The silhouette plot is obtained from the `silhouette()` function out from the `cluster` package. For a detailed description of the silhouette plot, its rationale, and its interpretation, see: 
+The silhouette plot is obtained from the `silhouette()` function out from the `cluster` package. For a detailed description of the silhouette plot, its rationale, and its interpretation, see:
 
--Rousseeuw P J. 1987. *Silhouettes: A graphical aid to the interpretation and validation of cluster analysis*, Journal of Computational and Applied Mathematics 20, 53-65
+* Rousseeuw P J. 1987. *Silhouettes: A graphical aid to the interpretation and validation of cluster analysis*, Journal of Computational and Applied Mathematics 20, 53-65
 
 For the idea of clustering categories on the basis of the CA coordinates from a full high-dimensional space (or from a subset thereof), see:
 
--Ciampi et al. 2005. *Correspondence analysis and two-way clustering*, SORT 29 (1), 27-4
-
--Beh et al. 2011. *A European perception of food using two methods of correspondence analysis*, Food Quality and Preference 22(2), 226-231
+* Ciampi et al. 2005. *Correspondence analysis and two-way clustering*, SORT 29 (1), 27-4
+* Beh et al. 2011. *A European perception of food using two methods of correspondence analysis*, Food Quality and Preference 22(2), 226-231
 
 Please note that the interpretation of the clustering when both row AND column categories are used must procede with caution due to the issue of inter-class points' distance interpretation. For a full description of the issue (also with further references), see:
 
--Greenacre M. 2007. *Correspondence Analysis in Practice*, Boca Raton-London-New York, Chapman&Hall/CRC, 267-268.
+* Greenacre M. 2007. *Correspondence Analysis in Practice*, Boca Raton-London-New York, Chapman&Hall/CRC, 267-268.
 ```r
 res <- ca.cluster(greenacre_data, which="rows", dim=3, opt.part=TRUE)
 #displays a dendrogram for row categories, with rectangles indicating the clusters defined by the optimal partition method. The clustering is based on a space of dimensionality 3. A silhouette plot, a scatterplot, and a CA scatterplot with indication of cluster membership are also produced. The cluster membership is stored in the object 'res'.
 ```
 
-<br><br><br>
+<br><br>
+## History
 New in `version 0.5`:
 
 `ca.scatter()`: allows to get different types of CA scatterplots. It is just a wrapper for functions from the `ca` and `FactoMineR` packages.
