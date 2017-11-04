@@ -35,7 +35,7 @@ sig.tot.inertia.perm(greenacre_data)
 [![image.jpg](https://s1.postimg.org/1i7jawtokf/image.jpg)](https://postimg.org/image/6bwe71ednf/)
 
 <br><br>
-`aver.rule()`:returns a chart suggesting which CA dimension is important for data structure interpretation, according to the so-called 'average rule':
+`aver.rule()`: returns a chart suggesting which CA dimension is important for data structure interpretation, according to the so-called 'average rule':
 ```r
 aver.rule(greenacre_data)
 ```
