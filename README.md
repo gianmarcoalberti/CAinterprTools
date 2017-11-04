@@ -173,6 +173,17 @@ An optimal clustering solution can be obtained setting the `opt.part` parameter 
 
 The function returns a list storing information about the cluster membership (i.e., which categories belong to which cluster).
 
+```r
+data("fire_loss")
+ca.cluster(fire_loss, which="rows", opt.part=TRUE)
+```
+
+[![Rplot.jpg](https://s1.postimg.org/5dyyeutqi7/Rplot.jpg)](https://postimg.org/image/2xcpzxmuln/)
+
+[![Rplot01.jpg](https://s1.postimg.org/1v2jhduthb/Rplot01.jpg)](https://postimg.org/image/1kfpo8flbv/)
+
+[![Rplot02.jpg](https://s1.postimg.org/8yaex02tmn/Rplot02.jpg)](https://postimg.org/image/95dmsfoz23/)
+
 *Further info and Disclaimer*: 
 
 The silhouette plot is obtained from the `silhouette()` function out from the `cluster` package. For a detailed description of the silhouette plot, its rationale, and its interpretation, see:
