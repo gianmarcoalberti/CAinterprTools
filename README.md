@@ -153,8 +153,8 @@ ca.plot(greenacre_data,1,2,cntr="columns")
 * (3) a bi-dimensional space defined by a pair of user-defined dimensions. 
 
 To obtain (1), the `dim` parameter must be left in its default value (`NULL`); 
-To obtain (2), the `dim` parameter must be given an integer (needless to say, smaller than the full dimensionality of the input data); 
-To obtain (3), the `dim` parameter must be given a vector (e.g., c(1,3)) specifying the dimensions the user is interested in.
+to obtain (2), the `dim` parameter must be given an integer (needless to say, smaller than the full dimensionality of the input data); 
+to obtain (3), the `dim` parameter must be given a vector (e.g., c(1,3)) specifying the dimensions the user is interested in.
 
 The method by which the distance is calculated is specified using the `dist.meth` parameter, while the agglomerative method is speficied using the `aggl.meth` parameter. By default, they are set to `euclidean` and `ward.D2` respectively.
 
