@@ -4,6 +4,7 @@ vers 0.15
 A number of interesting packages are available to perform Correspondence Analysis in R. At the best of my knowledge, however, they lack some tools to help users to eyeball some critical CA aspects (e.g., contribution of rows/cols categories to the principal axes, quality of the display,correlation of rows/cols categories with dimensions, etc). Besides providing those facilities, this package allows calculating the significance of the CA dimensions by means of the 'Average Rule', the Malinvaud test, and by permutation test. Further, it allows to also calculate the permuted significance of the CA total inertia. 
 
 The package comes with some datasets drawn from literature:
+
 `greenacre_data`: after Greenacre M, *Correspondence Analysis in Practice*, Boca Raton-London-New York, Chapman&Hall/CRC 2007 (exhibit 12.1)
 
 `brand_coffee`: after Kennedy R et al, *Practical Applications of Correspondence Analysis to Categorical Data in Market Research*, in Journal of Targeting Measurement and Analysis for Marketing, 1996
@@ -42,14 +43,14 @@ aver.rule(greenacre_data)
 [![image.jpg](https://s1.postimg.org/8pojgl09wv/image.jpg)](https://postimg.org/image/2b9xkzidd7/)
 
 <br><br>
-`malinvaud()`: performs the Malinvaud test and to print on screen the test's result (among which the significance of the CA dimensions); a plot is also provided, wherein a reference line (in RED) indicates the 0.05 threshold:
+`malinvaud()`: performs the Malinvaud test and returns the test's result (among which the significance of the CA dimensions); a plot is also provided, wherein a reference line (in RED) indicates the 0.05 threshold:
 ```r
 malinvaud(greenacre_data)
 ```
 [![image.jpg](https://s1.postimg.org/20n3ru82ov/image.jpg)](https://postimg.org/image/3vzokgkiaj/)
 
 <br><br>
-`sig.dim.perm()`: calculates the significance of the 1 and 2 CA dimensions via permutation test, and to display the results as a scatterplot; a large RED dot indicates the observed inertia. Permuted p-values are reported in the axes' labels:
+`sig.dim.perm()`: calculates the significance of the 1 and 2 CA dimensions via permutation test, and displays the results as a scatterplot; a large RED dot indicates the observed inertia. Permuted p-values are reported in the axes' labels:
 ```r
 sig.dim.perm(greenacre_data,1,2)
 ```
@@ -131,22 +132,22 @@ ca.percept(greeacre_data,1,2,focus="col",dim.corr=1, guide=FALSE)
 
 The function returns a dataframe containing data about row and column points:
 
-(a) coordinates on the first selected dimension 
-(b) coordinates on the second selected dimension 
-(c) contribution to the first selected dimension 
-(d) contribution to the second selected dimension 
-(e) quality on the first selected dimension 
-(f) quality on the second selected dimension 
-(g) correlation with the first selected dimension 
-(h) correlation with the second selected dimension 
-(j) (k) asterisks indicating whether the corresponding category is a major contribution to the first and/or second selected dimension.
+* (a) coordinates on the first selected dimension 
+* (b) coordinates on the second selected dimension 
+* (c) contribution to the first selected dimension 
+* (d) contribution to the second selected dimension 
+* (e) quality on the first selected dimension 
+* (f) quality on the second selected dimension 
+* (g) correlation with the first selected dimension 
+* (h) correlation with the second selected dimension 
+* (j) (k) asterisks indicating whether the corresponding category is a major contribution to the first and/or second selected dimension.
 ```r
 ca.plot(greenacre_data,1,2,cntr="columns")
 ```
 [![image.jpg](https://s1.postimg.org/3nitnj40bz/image.jpg)](https://postimg.org/image/92hc5yj5pn/)
 
 <br><br>
-`ca.cluster()`: plots the result of cluster analysis performed on the results of Correspondence Analysis, and to plot a dendrogram, a silouette plot depicting the "quality" of the clustering solution, and a scatterplot with points coded according to the cluster membership. `ca.cluster()` provides the facility to perform hierarchical cluster analysis of row and/or column categories on the basis of Correspondence Analysis result. The clustering is based on the row and/or colum categories' coordinates from:
+`ca.cluster()`: plots the result of cluster analysis performed on the results of Correspondence Analysis, and plots a dendrogram, a silouette plot depicting the "quality" of the clustering solution, and a scatterplot with points coded according to the cluster membership. `ca.cluster()` provides the facility to perform hierarchical cluster analysis of row and/or column categories on the basis of Correspondence Analysis result. The clustering is based on the row and/or colum categories' coordinates from:
 
 * (1) a high-dimensional space corresponding to the whole dimensionality of the input contingency table; 
 * (2) a high-dimensional space of dimensionality smaller than the full dimensionality of the input dataset; 
@@ -168,7 +169,7 @@ Also note:
 
 * the silhouette plot's labels end with a number indicating the cluster to which each category is closer.
 
-An optimal clustering solution can be obtained setting the `opt.part` parameter to `TRUE`. The optimal partition is selected by means of an iterative routine which locates at which cluster solution the highest average silhouette width is achieved. If the `opt.part` parameter is set to TRUE, an additional plot is returned along with the silhouette plot. It displays a scatterplot in which the cluster solution (x-axis) is plotted against the average silhouette width (y-axis). A vertical reference line indicate the cluster solution which maximize the silhouette width, corresponding to the suggested optimal partition.
+An optimal clustering solution can be obtained setting the `opt.part` parameter to `TRUE`. The optimal partition is selected by means of an iterative routine which locates at which cluster solution the highest average silhouette width is achieved. If the `opt.part` parameter is set to `TRUE`, an additional plot is returned along with the silhouette plot. It displays a scatterplot in which the cluster solution (x-axis) is plotted against the average silhouette width (y-axis). A vertical reference line indicate the cluster solution which maximize the silhouette width, corresponding to the suggested optimal partition.
 
 The function returns a list storing information about the cluster membership (i.e., which categories belong to which cluster).
 
