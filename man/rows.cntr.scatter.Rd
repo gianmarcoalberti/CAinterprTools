@@ -18,7 +18,7 @@ rows.cntr.scatter(data, x = 1, y = 2, filter = FALSE, cex.labls = 3)
 \item{cex.labls:}{adjust the size of the categories' labels}
 }
 \description{
-This function allows to plot a scatterplot of the contribution of row categories to two selected dimensions. Two references lines (in RED) indicate the threshold above which the contribution can be considered important for the determination of the dimensions. A diagonal line (in BLACK) is a visual aid to eyeball whether a category is actually contributing more (in relative terms) to either of the two dimensions.
+This function allows to plot a scatterplot of the contribution of row categories to two selected dimensions. Two references lines (in RED) indicate the threshold above which the contribution can be considered important for the determination of the dimensions. A diagonal line is a visual aid to eyeball whether a category is actually contributing more (in relative terms) to either of the two dimensions.
 The row categories' labels are coupled with + or - symbols within round brackets indicating to which side of the two selected dimensions the contribution values that can be read off from the chart are actually referring. 
 The first symbol (i.e., the one to the left), either + or -, refers to the first of the selected dimensions (i.e., the one reported on the x-axis). The second symbol (i.e., the one to the right) refers to the second of the selected dimensions (i.e., the one reported on the y-axis).
 }

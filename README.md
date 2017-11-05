@@ -1,5 +1,5 @@
 # CAinterprTools
-vers 0.15
+vers 0.16
 
 A number of interesting packages are available to perform Correspondence Analysis in R. At the best of my knowledge, however, they lack some tools to help users to eyeball some critical CA aspects (e.g., contribution of rows/cols categories to the principal axes, quality of the display,correlation of rows/cols categories with dimensions, etc). Besides providing those facilities, this package allows calculating the significance of the CA dimensions by means of the 'Average Rule', the Malinvaud test, and by permutation test. Further, it allows to also calculate the permuted significance of the CA total inertia. 
 
@@ -251,6 +251,10 @@ New in `version 0.15`:
 
 minor adjustments to the plots' axes labels formatting; the `malinvaud()` function now returns the output table; the `fire_loss` and `breakfast` dataset have been added.
 
+New in `version 0.16`: 
+
+the charts returned by the `cols.cntr.scatter()`, `cols.corr.scatter()`, `rows.cntr.scatter()`, and `rows.corr.scatter()` have been modified in order to be set with a ratio of 1 (i.e., 1 unit on the x-axis is equal to 1 unit on the y-axis). In these same plots, the diagonal line has been given a transparent black colour.
+
 
 ## Installation
 To install the package  in R, just follow the few steps listed below:
@@ -265,7 +269,7 @@ library(devtools)
 ```
 3) download the 'CAinterprTools' package  from GitHub via the 'devtools''s command: 
 ```r
-install_github("gianmarcoalberti/CAinterprTools@v0.15")
+install_github("gianmarcoalberti/CAinterprTools@v0.16")
 ```
 4) load the package: 
 ```r

@@ -1,6 +1,6 @@
 #' Scatterplot for column categories contribution to dimensions
 #'
-#' This function allows to plot a scatterplot of the contribution of column categories to two selected dimensions. Two references lines (in RED) indicate the threshold above which the contribution can be considered important for the determination of the dimensions. A diagonal line (in BLACK) is a visual aid to eyeball whether a category is actually contributing more (in relative terms) to either of the two dimensions.
+#' This function allows to plot a scatterplot of the contribution of column categories to two selected dimensions. Two references lines (in RED) indicate the threshold above which the contribution can be considered important for the determination of the dimensions. A diagonal line is a visual aid to eyeball whether a category is actually contributing more (in relative terms) to either of the two dimensions.
 #' The column categories' labels are coupled with + or - symbols within round brackets indicating which to side of the two selected dimensions the contribution values that can be read off from the chart are actually referring. 
 #' The first symbol (i.e., the one to the left), either + or -, refers to the first of the selected dimensions (i.e., the one reported on the x-axis). The second symbol (i.e., the one to the right) refers to the second of the selected dimensions (i.e., the one reported on the y-axis).   
 #' @param data: name of the dataset (must be in dataframe format).
@@ -31,9 +31,13 @@ cols.cntr.scatter <- function (data, x = 1, y = 2, filter=FALSE, cex.labls=3) {
   limit <- max(xmax, ymax)
   ifelse(filter==FALSE, dfr <- dfr, dfr <- subset(dfr, cntr1>(100/ncols)*10 | cntr2>(100/ncols)*10))
   p <- ggplot(dfr, aes(x = cntr1, y = cntr2)) + geom_point(alpha = 0.8) + 
-    geom_hline(yintercept = round((100/ncols) * 10, digits = 0), 
-               colour = "red", linetype = "dashed") + geom_vline(xintercept = round((100/ncols) * 10, digits = 0), colour = "red", linetype = "dashed") + 
-    scale_y_continuous(limit = c(0, limit)) + scale_x_continuous(limit = c(0,limit)) + geom_abline(intercept = 0, slope = 1) + theme(panel.background = element_rect(fill="white", colour="black")) + 
-    geom_text_repel(data = dfr, aes(label = labels.final), size = cex.labls) + labs(x = paste("Column categories' contribution (permills) to Dim.",x), y = paste("Column categories' contribution (permills) to Dim.", y))
+    geom_hline(yintercept = round((100/ncols) * 10, digits = 0), colour = "red", linetype = "dashed") + 
+    geom_vline(xintercept = round((100/ncols) * 10, digits = 0), colour = "red", linetype = "dashed") + 
+    scale_y_continuous(limit = c(0, limit)) + scale_x_continuous(limit = c(0,limit)) + 
+    geom_abline(intercept = 0, slope = 1, colour="#00000088") + 
+    theme(panel.background = element_rect(fill="white", colour="black")) + 
+    geom_text_repel(data = dfr, aes(label = labels.final), size = cex.labls) + 
+    labs(x = paste("Column categories' contribution (permills) to Dim.",x), y = paste("Column categories' contribution (permills) to Dim.", y)) +
+    coord_fixed(ratio = 1, xlim = NULL, ylim = NULL, expand = TRUE)
   return(p)
 }
