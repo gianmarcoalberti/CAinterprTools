@@ -50,14 +50,14 @@ malinvaud(greenacre_data)
 [![image.jpg](https://s1.postimg.org/20n3ru82ov/image.jpg)](https://postimg.org/image/3vzokgkiaj/)
 
 <br><br>
-`sig.dim.perm()`: calculates the significance of the 1 and 2 CA dimensions via permutation test, and displays the results as a scatterplot; a large RED dot indicates the observed inertia. Permuted p-values are reported in the axes' labels:
+`sig.dim.perm()`: calculates the significance of a pair of selected dimensions via permutation test, and displays the results as a scatterplot; a large RED dot indicates the observed inertia. Permuted p-values are reported in the axes' labels:
 ```r
 sig.dim.perm(greenacre_data,1,2)
 ```
 [![image.jpg](https://s1.postimg.org/1c6llz9wnz/image.jpg)](https://postimg.org/image/7n1ljuyqhn/)
 
 <br><br>
-`sig.dim.perm()`: tests the significance of the CA dimensions by means of permutation of the input contingency table. A scree-plot displays for each dimension the observed eigenvalue and the 95th percentile of the permuted distribution of the corresponding eigenvalue. Observed eigenvalues that are larger than the corresponding 95th percentile are significant at least at alpha 0.05. P values are displayed into the chart:
+`sig.dim.perm.scree()`: tests the significance of the CA dimensions by means of permutation of the input contingency table. A scree-plot displays for each dimension the observed eigenvalue and the 95th percentile of the permuted distribution of the corresponding eigenvalue. Observed eigenvalues that are larger than the corresponding 95th percentile are significant at least at alpha 0.05. P values are displayed into the chart:
 ```r
 sig.dim.perm.scree(greenacre_data)
 ```
