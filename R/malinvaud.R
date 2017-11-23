@@ -2,7 +2,7 @@
 #'
 #' This function allows you to perform the Malinvaud's test, which assesses the significance of the CA dimensions. 
 #' The function returns both a table in the R console and a plot. The former lists some values, among which the significance of each CA dimension. Dimensions whose p-value is below the 0.05 threshold (displayed in RED in the returned plot) are significant. 
-#' @param data: name fo the datset (must be in dataframe format).
+#' @param data: name of the datset (must be in dataframe format).
 #' @keywords Malinvaud test
 #' @export
 #' @examples

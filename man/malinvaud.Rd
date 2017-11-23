@@ -7,7 +7,7 @@
 malinvaud(data)
 }
 \arguments{
-\item{data:}{name fo the datset (must be in dataframe format).}
+\item{data:}{name of the datset (must be in dataframe format).}
 }
 \description{
 This function allows you to perform the Malinvaud's test, which assesses the significance of the CA dimensions. 

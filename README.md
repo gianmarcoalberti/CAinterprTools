@@ -1,5 +1,5 @@
 # CAinterprTools
-vers 0.16
+vers 0.17
 
 A number of interesting packages are available to perform Correspondence Analysis in R. At the best of my knowledge, however, they lack some tools to help users to eyeball some critical CA aspects (e.g., contribution of rows/cols categories to the principal axes, quality of the display,correlation of rows/cols categories with dimensions, etc). Besides providing those facilities, this package allows calculating the significance of the CA dimensions by means of the 'Average Rule', the Malinvaud test, and by permutation test. Further, it allows to also calculate the permuted significance of the CA total inertia. 
 
@@ -99,7 +99,10 @@ rows.corr.scatter(greenacre_data,1,2)
 [![image.jpg](https://s1.postimg.org/57vt8txpjj/image.jpg)](https://postimg.org/image/5iin1zcxor/)
 
 <br><br>
-The column equivalent of the last five functions:
+`table.collapse()`: This function allows to collapse the rows and columns of the input contingency table on the basis of the results of a hierarchical clustering. The function returns a list containing the input table, the rows-collapsed table, the columns-collapsed table, and a table with both rows and columns collapsed. It optionally returns two dendrograms (one for the row profiles, one for the column profiles) representing the clusters. The hierarchical clustering is obtained using the `FactoMineR`s `HCPC()` function. *Rationale*: Clustering rows and/or columns of a table could interest the users who want to know where a *significant association is concentrated* by *collecting together similar rows (or columns) in discrete groups* (Greenacre M, *Correspondence Analysis in Practice*, Boca Raton-London-New York, Chapman&Hall/CRC 2007, pp. 116, 120). Rows and/or columns are progressively aggregated in a way in which every successive merging produces the smallest change in the table’s inertia. The underlying logic lies in the fact that rows (or columns) whose merging produces a small change in table’s inertia have similar profiles. This procedure can be thought of as maximizing the between-group inertia and minimizing the within-group inertia. A method essentially similar is that provided by the `FactoMineR` package (Husson F, Le S, Pages J, *Exploratory Multivariate Analysis by Example Using R*, Boca Raton-London-New York, CRC Press, pp. 177-185). The cluster solution is based on the following rationale: a division into Q (i.e., a given number of) clusters is suggested when the increase in between-group inertia attained when passing from a Q-1 to a Q partition is greater than that from a Q to a Q+1 clusters partition. In other words, during the process of rows (or columns) merging, if the following agggregation raises highly the within-group inertia, it means that at the further step very different profiles are being aggregated.
+
+<br><br>
+The column equivalent of some of the above functions are:
 ```r
 cols.cntr(greenacre_data,1,cti=TRUE,sort=TRUE)
 cols.cntr.scatter(greenacre_data,1,2)
@@ -255,6 +258,10 @@ New in `version 0.16`:
 
 the charts returned by the `cols.cntr.scatter()`, `cols.corr.scatter()`, `rows.cntr.scatter()`, and `rows.corr.scatter()` have been modified in order to be set with a ratio of 1 (i.e., 1 unit on the x-axis is equal to 1 unit on the y-axis). In these same plots, the diagonal line has been given a transparent black colour.
 
+New in `version 0.17`: 
+
+the `table.collapse()` function has been added.
+
 
 ## Installation
 To install the package  in R, just follow the few steps listed below:
@@ -269,7 +276,7 @@ library(devtools)
 ```
 3) download the 'CAinterprTools' package  from GitHub via the 'devtools''s command: 
 ```r
-install_github("gianmarcoalberti/CAinterprTools@v0.16")
+install_github("gianmarcoalberti/CAinterprTools@v0.17")
 ```
 4) load the package: 
 ```r
