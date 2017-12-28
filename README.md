@@ -15,7 +15,7 @@ The package comes with some datasets drawn from literature:
 
 `breakfast`: after Bendixen M, *A Practical Guide to the Use of Correspondence Analysis in Marketing Research*, in Research on-line 1, 1996, 16-38 (table 5)
 
-<br><br>
+<br>
 
 ## List of implemented functions
 * `aver.rule`: average rule chart.
@@ -37,8 +37,7 @@ The package comes with some datasets drawn from literature:
 * `sig.tot.inertia.perm()`: permuted significance of the CA total inertia.
 * `table.collapse()`: collapse rows and columns of a table on the basis of hierarchical clustering.
 
-
-<br><br>
+<br>
 
 ## Description of implemented functions
 To load the sample dataset:
