@@ -15,8 +15,32 @@ The package comes with some datasets drawn from literature:
 
 `breakfast`: after Bendixen M, *A Practical Guide to the Use of Correspondence Analysis in Marketing Research*, in Research on-line 1, 1996, 16-38 (table 5)
 
+<br><br>
 
 ## List of implemented functions
+* `aver.rule`: average rule chart.
+* `ca.cluster`: clustering row/column categories on the basis of Correspondence Analysis coordinates from a space of user-defined dimensionality.
+* `ca.corr()`: chart of correlation between rows and columns categories.
+* `ca.percept()`: perceptual map-like Correspondence Analysis scatterplot.
+* `ca.plot()`: intepretation-oriented Correspondence Analysis scatterplots, with informative and flexible (non-overlapping) labels.
+* `ca.plus()`: facility for interpretation-oriented CA scatterplot.
+* `ca.scatter()`: basic scatterplot visualization facility.
+* `cols.cntr()`: columns contribution chart.
+* `cols.cntr.scatter()`: scatterplot for column categories contribution to dimensions.
+* `cols.qlt()`: chart of columns quality of the display.
+* `malinvaud()`: Malinvaud's test for significance of the CA dimensions.
+* `rows.cntr()`: rows contribution chart.
+* `rows.cntr.scatter()`: scatterplot for row categories contribution to dimensions.
+* `rows.qlt()`: chart of rows quality of the display.
+* `sig.dim.perm()`: permuted significance of CA dimensions.
+* `sig.dim.perm.scree()`: scree plot to test the significance of CA dimensions by means of a randomized procedure.
+* `sig.tot.inertia.perm()`: permuted significance of the CA total inertia.
+* `table.collapse()`: collapse rows and columns of a table on the basis of hierarchical clustering.
+
+
+<br><br>
+
+## Description of implemented functions
 To load the sample dataset:
 ```r
 data("greenacre_data")
@@ -85,7 +109,7 @@ rows.qlt(greenacre_data,1,2)
 [![image.jpg](https://s1.postimg.org/6p0jre1nov/image.jpg)](https://postimg.org/image/9qwfsm2zvv/)
 
 <br><br>
-`rows.corr()`: calculates the correlation (sqrt(COS2)) of the row categories with the selected dimension. It displays the correlation of the row categories with the selected dimension; the parameter sort=TRUE arrange the categories in decreasing order of correlation. At the left-hand side, the categories' labels show a symbol (+ or -) according to which side of the selected dimension they are correlated, either positive or negative. At the right-hand side, a legend indicates the column categories' contribution (in permils) to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. Further, an asterisk (*) flags the categories which can be considered major contributors to the definition of the dimension:
+`rows.corr()`: calculates and graphically displays the correlation (sqrt(COS2)) of the row categories with the selected dimension. The parameter sort=TRUE arranges the categories in decreasing order of correlation. In the returned chart, at the left-hand side, the categories' labels show a symbol (+ or -) according to which side of the selected dimension they are correlated, either positive or negative. At the right-hand side, a legend indicates the column categories' contribution (in permils) to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. Further, an asterisk (*) flags the categories which can be considered major contributors to the definition of the dimension:
 ```r
 rows.corr(greenacre_data,1) 
 ```
