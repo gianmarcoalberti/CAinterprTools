@@ -22,10 +22,12 @@ sig.dim.perm.scree <- function(data, B=1000, cex=0.7, pos=4, offset=0.5){
   d <- as.data.frame(matrix(nrow=nIter, ncol=table.dim)) 
   res <- CA(data, graph=FALSE)
   d[1,]<- rbind(res$eig[,1])
+  pb <- txtProgressBar(min = 0, max = nIter, style = 3)                                     #set the progress bar to be used inside the loop
   for (i in 2:nIter){
     rand.table <- as.data.frame(r2dtable(1, apply(data, 1,sum), apply(data, 2, sum)))  
     res <- CA(rand.table, graph=FALSE)
     d[i,] <- rbind(res$eig[,1])
+    setTxtProgressBar(pb, i)
   }
   target.percent <- apply(d[-c(1),],2, quantile, probs = 0.95) #calculate the 95th percentile of the randomized eigenvalues, excluding the first row (which store the observed eigenvalues)
   max.y.lim <- max(d[1,], target.percent)
