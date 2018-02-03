@@ -20,8 +20,8 @@ A number of interesting packages are available to perform
 \tabular{ll}{
 Package: \tab CAinterprTools\cr
 Type: \tab Package\cr
-Version: \tab 0.18\cr
-Date: \tab 2018-01\cr
+Version: \tab 0.19\cr
+Date: \tab 2018-02\cr
 License: \tab GPL\cr
 }
 The package allows to plot a number of Correspondence Analysis information such as the contribution of rows and columns categories to the principal axes, the quality of points display on selected dimensions, the correlation of row and column categories to selected dimensions, etc. It also allows to assess which dimension(s) is important for the data structure interpretation by means of the so called 'Average Rule'. Moreover, it implements the Malinvaud test, which test the significance of the table dimensions. The package also offers the facility to plot the permuted distribution of the table total inertia as well as of the inertia accounted for by pairs of selected dimensions. The two latter facilities allows to test the significance of the total inertia and of the dimensions the user is interest in. 

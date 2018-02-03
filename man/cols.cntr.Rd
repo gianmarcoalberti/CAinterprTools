@@ -4,7 +4,7 @@
 \alias{cols.cntr}
 \title{Columns contribution chart}
 \usage{
-cols.cntr(data, x = 1, cti = FALSE, sort = TRUE, corr.thrs = 0,
+cols.cntr(data, x = 1, sort = TRUE, corr.thrs = 0, leg = TRUE,
   cex.labls = 0.75, dotprightm = 5, cex.leg = 0.6, leg.x.spc = 1,
   leg.y.spc = 1)
 }
@@ -13,11 +13,11 @@ cols.cntr(data, x = 1, cti = FALSE, sort = TRUE, corr.thrs = 0,
 
 \item{x:}{dimension for which the column categories contribution is returned (1st dimension by default).}
 
-\item{cti:}{logical value (TRUE/FALSE) which specifies if the contribution to the total inertia must be displayed as well (FALSE by default).}
-
 \item{sort:}{logical value (TRUE/FALSE) which allows to sort the categories in descending order of contribution to the inertia of the selected dimension. TRUE is set by default.}
 
 \item{corr.thrs:}{threshold above which the row categories correlation will be displayed in the plot's legend.}
+
+\item{leg:}{enable (TRUE; default) or disable (FALSE) the legend at the right-hand side of the dotplot.}
 
 \item{cex.labls:}{adjust the size of the dotplot's labels.}
 
@@ -30,12 +30,13 @@ cols.cntr(data, x = 1, cti = FALSE, sort = TRUE, corr.thrs = 0,
 \item{leg.y.spc:}{adjust the y interspace of the chart's legend. See more info from the 'legend' function's help (?legend).}
 }
 \description{
-This function allows to calculate the contribution of the column categories to the selected dimension. 
-It displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. 
-The parameter cti=TRUE specifies that the categories' contribution to the total inertia is also shown (hollow circle). 
+This function allows to calculate the contribution of the column categories to the selected dimension.
+}
+\details{
+The function displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. 
 The parameter sort=TRUE sorts the categories in descending order of contribution to the inertia of the selected dimension. 
 At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. 
-At the right-hand side, a legend reports the correlation (sqrt(COS2)) of the row categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each row category is correlated.
+At the right-hand side, a legend (which is enabled/disabled using the 'leg' parameter) reports the correlation (sqrt(COS2)) of the row categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each row category is correlated.
 }
 \examples{
 data(greenacre_data)

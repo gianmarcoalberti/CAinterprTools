@@ -1,5 +1,5 @@
 # CAinterprTools
-vers 0.18
+vers 0.19
 
 A number of interesting packages are available to perform Correspondence Analysis in R. At the best of my knowledge, however, they lack some tools to help users to eyeball some critical CA aspects (e.g., contribution of rows/cols categories to the principal axes, quality of the display,correlation of rows/cols categories with dimensions, etc). Besides providing those facilities, this package allows calculating the significance of the CA dimensions by means of the 'Average Rule', the Malinvaud test, and by permutation test. Further, it allows to also calculate the permuted significance of the CA total inertia. 
 
@@ -28,6 +28,7 @@ The package comes with some datasets drawn from literature:
 * `cols.cntr()`: columns contribution chart.
 * `cols.cntr.scatter()`: scatterplot for column categories contribution to dimensions.
 * `cols.qlt()`: chart of columns quality of the display.
+* `groupBycoord()`: define groups of categories on the basis of a selected partition into k groups employing the Jenks' natural break method on the selected dimension's coordinates.
 * `malinvaud()`: Malinvaud's test for significance of the CA dimensions.
 * `rows.cntr()`: rows contribution chart.
 * `rows.cntr.scatter()`: scatterplot for row categories contribution to dimensions.
@@ -61,6 +62,13 @@ aver.rule(greenacre_data)
 [![image.jpg](https://s1.postimg.org/8pojgl09wv/image.jpg)](https://postimg.org/image/2b9xkzidd7/)
 
 <br><br>
+`groupBycoord()`: allows to group the row/column categories into k user-defined partitions. K groups are created employing the Jenks' natural break method applied on the selected dimension's coordinates. A dotchart is returned representing the categories grouped into the selected partitions. At the bottom of the chart, the Goodness of Fit statistic is also reported. The function also returns a dataframe storing the categories' coordinates on the selected dimension and the group each category belongs to.
+```r
+groupBycoord(greenacre_data)
+```
+[![Rplot.jpg](https://s10.postimg.org/wct1ty2ix/Rplot.jpg)](https://postimg.org/image/sgfpxyhj9/)
+
+<br><br>
 `malinvaud()`: performs the Malinvaud test and returns the test's result (among which the significance of the CA dimensions); a plot is also provided, wherein a reference line (in RED) indicates the 0.05 threshold:
 ```r
 malinvaud(greenacre_data)
@@ -82,7 +90,7 @@ sig.dim.perm.scree(greenacre_data)
 [![image.jpg](https://s1.postimg.org/1fq7jpjhin/image.jpg)](https://postimg.org/image/9bayh25isr/)
 
 <br><br>
-`rows.cntr()`: calculates the contribution of the row categories to a selected dimension. It displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. The parameter `cti=TRUE` specifies that the categories' contribution to the total inertia is also shown (hollow circle). The parameter `sort=TRUE` sorts the categories in descending order of contribution to the inertia of the selected dimension. At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. At the right-hand side, a legend reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated:
+`rows.cntr()`: calculates the contribution of the row categories to a selected dimension. It displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. The parameter `sort=TRUE` sorts the categories in descending order of contribution to the inertia of the selected dimension. At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. At the right-hand side, a legend (which is enabled/disabled using the `leg` parameter) reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated:
 ```r
 rows.cntr(greenacre_data,1,cti=TRUE,sort=TRUE)
 ```
@@ -284,6 +292,10 @@ New in `version 0.18`:
 
 improvements and typos fixes to the help documentation; progress bar added to functions using randomized computations.
 
+New in `version 0.19`: 
+
+improvements and typos fixes to the help documentation; `groupBycoord()` added; the `rows.cntr()` and `cols.cntr()` functions have been modified: in the output chart, categories are now divided in two groups (major and minor contributors to the definition of the selected dimension). In the same function, the parameter `cti` has been removed. In the chart returned by the `rows.corr()` and `cols.corr()` functions, the categories are now grouped in two groups according to whether the correlation is with the positive (pole +) or negative (pole -) side of the selected dimension. In the `rows.cntr()`, `cols.cntr()`, `rows.corr()`, and `cols.corr()` functions the legend to the right-hand side of the chart is now optional.
+
 ## Installation
 To install the package  in R, just follow the few steps listed below:
 
@@ -297,7 +309,7 @@ library(devtools)
 ```
 3) download the 'CAinterprTools' package  from GitHub via the 'devtools''s command: 
 ```r
-install_github("gianmarcoalberti/CAinterprTools@v0.18")
+install_github("gianmarcoalberti/CAinterprTools@v0.19")
 ```
 4) load the package: 
 ```r

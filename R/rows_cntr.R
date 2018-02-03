@@ -1,16 +1,16 @@
 #' Rows contribution chart
 #'
-#' This function allows to calculate the contribution of the row categories to the selected dimension. 
-#' It displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. 
-#' The parameter cti=TRUE specifies that the categories' contribution to the total inertia is also shown (hollow circle). 
+#' This function allows to calculate the contribution of the row categories to the selected dimension.
+#' 
+#' The function displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension.
 #' The parameter sort=TRUE sorts the categories in descending order of contribution to the inertia of the selected dimension. 
 #' At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. 
-#' At the right-hand side, a legend reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated.
+#' At the right-hand side, a legend (which is enabled/disabled using the 'leg' parameter) reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated.
 #' @param data: name of the dataset (must be in dataframe format).
 #' @param x: dimension for which the row categories contribution is returned (1st dimension by default).
-#' @param cti: logical value (TRUE/FALSE) which specifies if the contribution to the total inertia must be displayed as well (FALSE by default).
 #' @param sort: logical value (TRUE/FALSE) which allows to sort the categories in descending order of contribution to the inertia of the selected dimension. TRUE is set by default.
 #' @param corr.thrs: threshold above which the column categories correlation will be displayed in the plot's legend.
+#' @param leg: enable (TRUE; default) or disable (FALSE) the legend at the right-hand side of the dotplot.
 #' @param cex.labls: adjust the size of the dotplot's labels.
 #' @param dotprightm: increases the empty space between the right margin of the dotplot and the left margin of the legend box.
 #' @param cex.leg: adjust the size of the legend's characters.
@@ -22,7 +22,7 @@
 #' data(greenacre_data)
 #' rows.cntr(greenacre_data, 2, cti=TRUE, sort=TRUE) # Plots the contribution of the row categories to the 2nd CA dimension, and also displays the contribnution to the total inertia. The categories are sorted in descending order of contribution to the inertia of the selected dimension.
 #' 
-rows.cntr <- function (data, x = 1, cti = FALSE, sort = TRUE, corr.thrs=0.0, cex.labls=0.75, dotprightm=5, cex.leg=0.6, leg.x.spc=1, leg.y.spc=1){
+rows.cntr <- function (data, x = 1, sort = TRUE, corr.thrs=0.0, leg=TRUE, cex.labls=0.75, dotprightm=5, cex.leg=0.6, leg.x.spc=1, leg.y.spc=1){
   nrows <- nrow(data)
   cadataframe <- CA(data, graph = FALSE)
   res.ca <- summary(ca(data))
@@ -33,14 +33,28 @@ rows.cntr <- function (data, x = 1, cti = FALSE, sort = TRUE, corr.thrs=0.0, cex
   df.col.corr$specif <- paste0(df.col.corr$labels, "(", df.col.corr$corr, ")")
   ifelse(corr.thrs==0.0, df.col.corr <- df.col.corr, df.col.corr <- subset(df.col.corr, corr>=corr.thrs))
   ifelse(sort == TRUE, df.to.use <- df[order(-df$cntr), ], df.to.use <- df)
-  par(oma=c(0,0,0,dotprightm))
-  dotchart2(df.to.use$cntr, labels = df.to.use$labels, sort = FALSE, lty = 2, xlim = c(0, 1000), cex.labels=cex.labls, xlab = paste("Row categories' contribution to Dim. ", x, " (in permills)"))
+  df.to.use$majcontr <- ifelse(df.to.use$cntr>round(((100/nrows) * 10)), "maj. contr.", "min. contr.")
+  if(leg==TRUE){ 
+    par(oma=c(0,0,0,dotprightm))
+  } else {}
+  dotchart2(df.to.use$cntr, 
+            labels = df.to.use$labels, 
+            groups=df.to.use$majcontr, 
+            sort = FALSE, 
+            lty = 2, 
+            xlim = c(0, 1000), 
+            cex.labels=cex.labls, 
+            xlab = paste("Row categories' contribution to Dim. ", x, " (in permills)"))
+  if(leg==TRUE){ 
   par(oma=c(0,0,0,0))
-  legend(x="topright", legend=df.col.corr[order(-df.col.corr$corr),]$specif, xpd=TRUE, cex=cex.leg, x.intersp = leg.x.spc, y.intersp = leg.y.spc)
+  legend(x="topright", 
+         legend=df.col.corr[order(-df.col.corr$corr),]$specif, 
+         xpd=TRUE, 
+         cex=cex.leg, 
+         x.intersp = leg.x.spc, 
+         y.intersp = leg.y.spc)
   par(oma=c(0,0,0,dotprightm))
+  } else {}
   abline(v = round(((100/nrows) * 10), digits = 0), lty = 2, col = "RED")
-  if (cti == T) {
-    dotchart2(df.to.use$cntr.tot, pch = 1, xlim = c(0, 1000), add = TRUE)
-    title(sub = "note: solid circle=contrib. to the dimension; hollow circle=contrib. to the total inertia", cex.sub = 0.75)
-  }
+  par(oma=c(0,0,0,0))
 }

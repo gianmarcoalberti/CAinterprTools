@@ -1,7 +1,7 @@
 Package: CAinterprTools
 Title: Package for graphical aid in Correspondence Analysis interpretation and
     significance testing
-Version: 0.18
+Version: 0.19
 Authors@R: "Gianmarco ALberti <gianmarcoalberti@tin.it> <gianmarcoalberti@gmail.com>[aut, cre]"
 Description: A number of interesting packages are available to perform
     Correspondence Analysis in R. At the best of my knowledge, they lack
@@ -13,7 +13,7 @@ Description: A number of interesting packages are available to perform
     Malinvaud test, and by permutation tests. It also allows to
     calculate the permuted significance of the CA total intertia.
 Depends:
-    R (>= 3.1.1),ca,FactoMineR,Hmisc,ggplot2,ggrepel,cluster,RcmdrMisc,reshape2
+    R (>= 3.1.1),ca,FactoMineR,Hmisc,ggplot2,ggrepel,cluster,RcmdrMisc,reshape2,classInt
 License: GPL
 LazyData: true
 RoxygenNote: 6.0.1
