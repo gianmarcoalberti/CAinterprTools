@@ -7,7 +7,7 @@
 #' The function also returns a dataframe storing the categories' coordinates on the selected dimension and the group each category belongs to.
 #' @param data: name of the dataset (must be in dataframe format).
 #' @param x: dimension whose coordinates are used to build the partitions.
-#' @param which: speficy if rows ("rows") or columns ("cols") must be grouped.
+#' @param which: speficy if rows ("rows"; default) or columns ("cols") must be grouped.
 #' @param cex.labls: set the size of the labels of the dotchart (0.75 by default).
 #' @keywords columns contribution
 #' @export

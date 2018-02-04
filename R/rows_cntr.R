@@ -5,6 +5,7 @@
 #' The function displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension.
 #' The parameter sort=TRUE sorts the categories in descending order of contribution to the inertia of the selected dimension. 
 #' At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. 
+#' The categories are grouped into two groups: 'major' and 'minor' contributors to the inertia of the selected dimension.
 #' At the right-hand side, a legend (which is enabled/disabled using the 'leg' parameter) reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated.
 #' @param data: name of the dataset (must be in dataframe format).
 #' @param x: dimension for which the row categories contribution is returned (1st dimension by default).

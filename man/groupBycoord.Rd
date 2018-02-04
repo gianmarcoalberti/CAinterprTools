@@ -11,7 +11,7 @@ groupBycoord(data, x = 1, k = 3, which = "rows", cex.labls = 0.75)
 
 \item{x:}{dimension whose coordinates are used to build the partitions.}
 
-\item{which:}{speficy if rows ("rows") or columns ("cols") must be grouped.}
+\item{which:}{speficy if rows ("rows"; default) or columns ("cols") must be grouped.}
 
 \item{cex.labls:}{set the size of the labels of the dotchart (0.75 by default).}
 }

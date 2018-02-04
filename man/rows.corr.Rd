@@ -34,6 +34,7 @@ This function allows to calculate the correlation (sqrt(COS2)) of the row catego
  
 The function displays the correlation of the row categories with the selected dimension; the parameter sort=TRUE arrange the categories in decreasing order of correlation. 
 At the left-hand side, the categories' labels show a symbol (+ or -) according to which side of the selected dimension they are correlated, either positive or negative. 
+The categories are grouped into two groups: categories correlated with the positive ('pole +') or negative ('pole -') pole of the selected dimension.
 At the right-hand side, a legend (which is enabled/disabled using the 'leg' parameter) indicates the column categories' contribution (in permills) to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. 
 Further, an asterisk (*) flags the categories which can be considered major contributors to the definition of the dimension.
 }

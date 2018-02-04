@@ -1,5 +1,5 @@
 # CAinterprTools
-vers 0.19
+vers 0.20
 
 A number of interesting packages are available to perform Correspondence Analysis in R. At the best of my knowledge, however, they lack some tools to help users to eyeball some critical CA aspects (e.g., contribution of rows/cols categories to the principal axes, quality of the display,correlation of rows/cols categories with dimensions, etc). Besides providing those facilities, this package allows calculating the significance of the CA dimensions by means of the 'Average Rule', the Malinvaud test, and by permutation test. Further, it allows to also calculate the permuted significance of the CA total inertia. 
 
@@ -30,6 +30,7 @@ The package comes with some datasets drawn from literature:
 * `cols.qlt()`: chart of columns quality of the display.
 * `groupBycoord()`: define groups of categories on the basis of a selected partition into k groups employing the Jenks' natural break method on the selected dimension's coordinates.
 * `malinvaud()`: Malinvaud's test for significance of the CA dimensions.
+* `rescale()`: rescale row/column categories coordinates between a minimum and maximum value.
 * `rows.cntr()`: rows contribution chart.
 * `rows.cntr.scatter()`: scatterplot for row categories contribution to dimensions.
 * `rows.qlt()`: chart of rows quality of the display.
@@ -69,7 +70,7 @@ groupBycoord(greenacre_data)
 [![Rplot.jpg](https://s10.postimg.org/wct1ty2ix/Rplot.jpg)](https://postimg.org/image/sgfpxyhj9/)
 
 <br><br>
-`malinvaud()`: performs the Malinvaud test and returns the test's result (among which the significance of the CA dimensions); a plot is also provided, wherein a reference line (in RED) indicates the 0.05 threshold:
+`malinvaud()`: performs the Malinvaud test returns both a table in the R console and a plot. The former lists relevant information, among which the significance of each CA dimension. The dotchart graphically represents the p-value of each dimension; dimensions are grouped by level of significance; a red reference lines indicates the 0.05 threshold:
 ```r
 malinvaud(greenacre_data)
 ```
@@ -90,7 +91,7 @@ sig.dim.perm.scree(greenacre_data)
 [![image.jpg](https://s1.postimg.org/1fq7jpjhin/image.jpg)](https://postimg.org/image/9bayh25isr/)
 
 <br><br>
-`rows.cntr()`: calculates the contribution of the row categories to a selected dimension. It displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. The parameter `sort=TRUE` sorts the categories in descending order of contribution to the inertia of the selected dimension. At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. At the right-hand side, a legend (which is enabled/disabled using the `leg` parameter) reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated:
+`rows.cntr()`: calculates the contribution of the row categories to a selected dimension. It displays the contribution of the categories as a dotplot. A reference line indicates the threshold above which a contribution can be considered important for the determination of the selected dimension. The parameter `sort=TRUE` sorts the categories in descending order of contribution to the inertia of the selected dimension. At the left-hand side of the plot, the categories' labels are given a symbol (+ or -) according to wheather each category is actually contributing to the definition of the positive or negative side of the dimension, respectively. The categories are grouped into two groups: 'major' and 'minor' contributors to the inertia of the selected dimension. At the right-hand side, a legend (which is enabled/disabled using the `leg` parameter) reports the correlation (sqrt(COS2)) of the column categories with the selected dimension. A symbol (+ or -) indicates with which side of the selected dimension each column category is correlated:
 ```r
 rows.cntr(greenacre_data,1,cti=TRUE,sort=TRUE)
 ```
@@ -111,7 +112,7 @@ rows.qlt(greenacre_data,1,2)
 [![image.jpg](https://s1.postimg.org/6p0jre1nov/image.jpg)](https://postimg.org/image/9qwfsm2zvv/)
 
 <br><br>
-`rows.corr()`: calculates and graphically displays the correlation (sqrt(COS2)) of the row categories with the selected dimension. The parameter sort=TRUE arranges the categories in decreasing order of correlation. In the returned chart, at the left-hand side, the categories' labels show a symbol (+ or -) according to which side of the selected dimension they are correlated, either positive or negative. At the right-hand side, a legend indicates the column categories' contribution (in permils) to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. Further, an asterisk (*) flags the categories which can be considered major contributors to the definition of the dimension:
+`rows.corr()`: calculates and graphically displays the correlation (sqrt(COS2)) of the row categories with the selected dimension. The parameter sort=TRUE arranges the categories in decreasing order of correlation. In the returned chart, at the left-hand side, the categories' labels show a symbol (+ or -) according to which side of the selected dimension they are correlated, either positive or negative. The categories are grouped into two groups: categories correlated with the positive ('pole +') or negative ('pole -') pole of the selected dimension. At the right-hand side, a legend indicates the column categories' contribution (in permils) to the selected dimension (value enclosed within round brackets), and a symbol (+ or -) indicating whether they are actually contributing to the definition of the positive or negative side of the dimension, respectively. Further, an asterisk (*) flags the categories which can be considered major contributors to the definition of the dimension:
 ```r
 rows.corr(greenacre_data,1) 
 ```
@@ -123,6 +124,10 @@ rows.corr(greenacre_data,1)
 rows.corr.scatter(greenacre_data,1,2)
 ```
 [![image.jpg](https://s1.postimg.org/57vt8txpjj/image.jpg)](https://postimg.org/image/5iin1zcxor/)
+
+<br><br>
+`rescale()`: allows to rescale the coordinates of a selected dimension to be constrained between a minimum and a maximum user-defined value.
+The rationale of the function is that users may wish to use the coordinates on a given dimension to devise a scale, along the lines of what is accomplished in: Greenacre M 2002, *The Use of Correspondence Analysis in the Exploration of Health Survey Data*, Documentos de Trabajo 5, Fundacion BBVA, pp. 7-39. The function returns a chart representing the row/column categories against the rescaled coordinates from the selected dimension. A dataframe is also returned containing the original values (i.e., the coordinates) and the corresponding rescaled values.
 
 <br><br>
 `table.collapse()`: allows to collapse the rows and columns of the input contingency table on the basis of the results of a hierarchical clustering. The function returns a list containing the input table, the rows-collapsed table, the columns-collapsed table, and a table with both rows and columns collapsed. It optionally returns two dendrograms (one for the row profiles, one for the column profiles) representing the clusters. The hierarchical clustering is obtained using the `FactoMineR`s `HCPC()` function. *Rationale*: Clustering rows and/or columns of a table could interest the users who want to know where a *significant association is concentrated* by *collecting together similar rows (or columns) in discrete groups* (Greenacre M, *Correspondence Analysis in Practice*, Boca Raton-London-New York, Chapman&Hall/CRC 2007, pp. 116, 120). Rows and/or columns are progressively aggregated in a way in which every successive merging produces the smallest change in the table’s inertia. The underlying logic lies in the fact that rows (or columns) whose merging produces a small change in table’s inertia have similar profiles. This procedure can be thought of as maximizing the between-group inertia and minimizing the within-group inertia. A method essentially similar is that provided by the `FactoMineR` package (Husson F, Le S, Pages J, *Exploratory Multivariate Analysis by Example Using R*, Boca Raton-London-New York, CRC Press, pp. 177-185). The cluster solution is based on the following rationale: a division into Q (i.e., a given number of) clusters is suggested when the increase in between-group inertia attained when passing from a Q-1 to a Q partition is greater than that from a Q to a Q+1 clusters partition. In other words, during the process of rows (or columns) merging, if the following agggregation raises highly the within-group inertia, it means that at the further step very different profiles are being aggregated.
@@ -296,6 +301,10 @@ New in `version 0.19`:
 
 improvements and typos fixes to the help documentation; `groupBycoord()` added; the `rows.cntr()` and `cols.cntr()` functions have been modified: in the output chart, categories are now divided in two groups (major and minor contributors to the definition of the selected dimension). In the same function, the parameter `cti` has been removed. In the chart returned by the `rows.corr()` and `cols.corr()` functions, the categories are now grouped in two groups according to whether the correlation is with the positive (pole +) or negative (pole -) side of the selected dimension. In the `rows.cntr()`, `cols.cntr()`, `rows.corr()`, and `cols.corr()` functions the legend to the right-hand side of the chart is now optional.
 
+New in `version 0.20`: 
+
+improvements and typos fixes to the help documentation; improvements to the chart returned by the `malinvaud()` function; `rescale()` function added.
+
 ## Installation
 To install the package  in R, just follow the few steps listed below:
 
@@ -309,7 +318,7 @@ library(devtools)
 ```
 3) download the 'CAinterprTools' package  from GitHub via the 'devtools''s command: 
 ```r
-install_github("gianmarcoalberti/CAinterprTools@v0.19")
+install_github("gianmarcoalberti/CAinterprTools@v0.20")
 ```
 4) load the package: 
 ```r
