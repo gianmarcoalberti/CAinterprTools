@@ -13,6 +13,8 @@ table.collapse(data, graph = FALSE)
 }
 \description{
 This function allows to collapse the rows and columns of the input contingency table on the basis of the results of a hierarchical clustering.\cr
+}
+\details{
 The function returns a list containing the input table, the rows-collapsed table, the columns-collapsed table, and a table with both rows and columns collapsed.
 It optionally returns two dendrograms (one for the row profiles, one for the column profiles) representing the clusters. \cr
 The hierarchical clustering is obtained using the FactoMineR's 'HCPC()' function.\cr
