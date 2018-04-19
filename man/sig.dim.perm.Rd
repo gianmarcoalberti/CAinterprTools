@@ -4,7 +4,7 @@
 \alias{sig.dim.perm}
 \title{Permuted significance of CA dimensions}
 \usage{
-sig.dim.perm(data, x = 1, y = 2, B = 999)
+sig.dim.perm(data, x = 1, y = 2, B = 1000)
 }
 \arguments{
 \item{data:}{name of the dataset (must be in dataframe format).}

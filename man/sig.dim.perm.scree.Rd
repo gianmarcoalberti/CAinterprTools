@@ -4,7 +4,7 @@
 \alias{sig.dim.perm.scree}
 \title{Scree plot to test the significance of CA dimensions by means of a randomized procedure}
 \usage{
-sig.dim.perm.scree(data, B = 999, cex = 0.7, pos = 4, offset = 0.5)
+sig.dim.perm.scree(data, B = 1000, cex = 0.7, pos = 4, offset = 0.5)
 }
 \arguments{
 \item{data:}{name of the contingency table (must be in dataframe format).}
