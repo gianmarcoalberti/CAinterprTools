@@ -13,7 +13,7 @@ sig.dim.perm(data, x = 1, y = 2, B = 1000)
 
 \item{y:}{second dimension whose significance is calculated (y=2 by default).}
 
-\item{B:}{number of permutations (999 by default).}
+\item{B:}{number of permutations (1000 by default).}
 }
 \description{
 This function allows you to calculate the permuted significance of selected CA dimensions. Number of permutation set at 999 by default, but can be increased by the user. 

@@ -20,7 +20,7 @@ A number of interesting packages are available to perform
 \tabular{ll}{
 Package: \tab CAinterprTools\cr
 Type: \tab Package\cr
-Version: \tab 0.22\cr
+Version: \tab 0.23\cr
 Date: \tab 2018-04\cr
 License: \tab GPL\cr
 }

@@ -5,7 +5,7 @@
 #' @param data: name of the dataset (must be in dataframe format).
 #' @param x: first dimension whose significance is calculated (x=1 by default).
 #' @param y: second dimension whose significance is calculated (y=2 by default).
-#' @param B: number of permutations (999 by default).
+#' @param B: number of permutations (1000 by default).
 #' @keywords permuted significance dimensions
 #' @export
 #' @examples

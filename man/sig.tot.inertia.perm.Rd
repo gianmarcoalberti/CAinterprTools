@@ -4,19 +4,19 @@
 \alias{sig.tot.inertia.perm}
 \title{Permuted significance of the CA total inertia}
 \usage{
-sig.tot.inertia.perm(data, B = 999)
+sig.tot.inertia.perm(data, B = 1000)
 }
 \arguments{
 \item{data:}{name of the dataset (must be in dataframe format).}
 
-\item{B:}{number of permutations (999 by default).}
+\item{B:}{number of permutations (1000 by default).}
 }
 \description{
-This function allows you to calculate the permuted significance of CA total inertia. Number of permutation set at 999 by default, but can be increased by the user.
+This function allows you to calculate the permuted significance of CA total inertia. Number of permutation set at 1000 by default, but can be increased by the user.
 }
 \examples{
 data(greenacre_data)
-sig.tot.inertia.perm(greenacre_data, 9999) #Returns the density curve of the permuted total inertia (using 9999 permutations). Observed total inertia and the 95th percentile of the permuted inertia are also displayed for testing the significance of the observed total inertia.
+sig.tot.inertia.perm(greenacre_data, 10000) #Returns the density curve of the permuted total inertia (using 10000 permutations). Observed total inertia and the 95th percentile of the permuted inertia are also displayed for testing the significance of the observed total inertia.
 
 }
 \keyword{inertia}
