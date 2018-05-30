@@ -1,6 +1,8 @@
 # CAinterprTools
 vers 0.24
 
+[![DOI](https://zenodo.org/badge/108516880.svg)](https://zenodo.org/badge/latestdoi/108516880)
+
 A number of interesting packages are available to perform Correspondence Analysis in R. At the best of my knowledge, however, they lack some tools to help users to eyeball some critical CA aspects (e.g., contribution of rows/cols categories to the principal axes, quality of the display,correlation of rows/cols categories with dimensions, etc). Besides providing those facilities, this package allows calculating the significance of the CA dimensions by means of the 'Average Rule', the Malinvaud test, and by permutation test. Further, it allows to also calculate the permuted significance of the CA total inertia. 
 
 The package comes with some datasets drawn from literature:
