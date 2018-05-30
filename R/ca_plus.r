@@ -16,9 +16,9 @@
 #' @examples
 #' data(greenacre_data)
 #' resCA <- CA(greeacre_data, graph=FALSE) #performs CA by means of FactoMineR's CA command, and store the result in the object named resCA. If supplementary data are present, the user has to specify which rows and/or columns are supplmentary into this function (see FactoMineR's documentation).
-#' ca.plus(resCA, 1, 2, focus="C", row.suppl="FALSE", col.suppl="FALSE", oneplot="TRUE")
+#' caPlus(resCA, 1, 2, focus="C", row.suppl="FALSE", col.suppl="FALSE", oneplot="TRUE")
 #' 
-ca.plus <- function(data, x=1, y=2, focus, row.suppl=FALSE, col.suppl=FALSE, oneplot=FALSE, inches=0.35, cex=0.5){
+caPlus <- function(data, x=1, y=2, focus, row.suppl=FALSE, col.suppl=FALSE, oneplot=FALSE, inches=0.35, cex=0.5){
   inrt.perc.x <- round(data$eig[x,2],1)
   inrt.perc.y <- round(data$eig[y,2],1)
   if (focus=="R") {

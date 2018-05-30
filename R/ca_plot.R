@@ -2,7 +2,7 @@
 #'
 #' This function allows to plot different types of CA scatterplots, adding information that are relevant to the CA interpretation. Thanks to the 'ggrepel' package, the labels tends to not overlap so producing a nicely readable chart.
 #' 
-#' ca.plot() provides the facility to produce: \cr
+#' caPlot() provides the facility to produce: \cr
 #' (1) a 'regular' (symmetric) scatterplot, in which points' labels only report the categories' names.
 #' 
 #' (2) a scatterplot with advanced labels. If the user's interest lies (for instance) in interpreting the rows in the space defined by the column categories, by setting the parameter 'cntr' to "columns" 
@@ -34,18 +34,18 @@
 #' @export
 #' @examples
 #' #data(brand_coffee)
-#' #res <- ca.plot(brand_coffee,1,2,adv.labls=FALSE)
+#' #res <- caPlot(brand_coffee,1,2,adv.labls=FALSE)
 #' #displays a 'regular' (symmetric) CA scatterplot, with row and column categories displayed in the same space, and with points' labels just reporting the categories' names. Relevant information (see description above) are stored in the variable 'res'.
 #'
-#' #ca.plot(brand_coffee,1,2,cntr="columns")
+#' #caPlot(brand_coffee,1,2,cntr="columns")
 #' #displays the CA scatterplot, with the columns' labels indicating which category has a major contribution to the definition of the selected dimensions. Rows' labels report the correlation (i.e., sqrt(COS2)) with the selected dimensions.
 #'
-#' #ca.plot(brand_coffee,1,2,cntr="rows")
+#' #caPlot(brand_coffee,1,2,cntr="rows")
 #' #displays the CA scatterplot, with the rows' labels indicating which category has a major contribution to the definition of the selected dimensions. Columns' labels report the correlation (i.e., sqrt(COS2)) with the selected dimensions.
 #'
-#' #ca.plot(brand_coffee,1,2,cntr="columns", percept=TRUE)
+#' #caPlot(brand_coffee,1,2,cntr="columns", percept=TRUE)
 #' #displays the CA scatterplot as a perceptual map; the poles of the selected dimensions will be given names according to the column categories that have a major contribution to the definition of the selected dimensions. Rows' labels report the correlation (i.e., sqrt(COS2)) with the selected dimensions.
-ca.plot <- function(data, x=1, y=2, adv.labls=TRUE, cntr="columns", percept=FALSE, qlt.thres=NULL, dot.size=2.5, cex.labls=3, cex.percept=3) {
+caPlot <- function(data, x=1, y=2, adv.labls=TRUE, cntr="columns", percept=FALSE, qlt.thres=NULL, dot.size=2.5, cex.labls=3, cex.percept=3) {
   dimensionality <- min(ncol(data), nrow(data))-1 
   ca.res <- CA(data, ncp=dimensionality, graph=FALSE)
   

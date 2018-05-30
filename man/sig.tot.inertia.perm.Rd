@@ -12,7 +12,8 @@ sig.tot.inertia.perm(data, B = 1000)
 \item{B:}{number of permutations (1000 by default).}
 }
 \description{
-This function allows you to calculate the permuted significance of CA total inertia. Number of permutation set at 1000 by default, but can be increased by the user.
+This function allows you to calculate the permuted significance of CA total inertia. 
+Number of permutation set at 1000 by default, but can be increased by the user.
 }
 \examples{
 data(greenacre_data)

@@ -30,3 +30,4 @@ data(greenacre_data)
 res <- rescale(greenacre_data, which="rows", min.v=0, max.v=10)
 
 }
+\keyword{rescale}

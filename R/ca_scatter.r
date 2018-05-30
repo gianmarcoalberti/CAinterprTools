@@ -9,12 +9,12 @@
 #' @export
 #' @examples
 #' data(greenacre_data)
-#' ca.scatter(greenacre_data, 1, 2, type=1) # symmetric scatterplot for rows and columns
-#' ca.scatter(greenacre_data, 1, 2, type=2) # Standard Biplot; 2 plots are returned: one with row-categories vectors displayed, one for columns categories vectors. 
-#' ca.scatter(greenacre_data, 1, 2, type=3) # scaterplot of row categories with groupings shown by different colors; scatterplot for column categories is also returned
-#' ca.scatter(greenacre_data, 1, 2, type=4) # 3D scatterplot with cluster tree for row categories; scatterplot for column categories is also returned.
+#' caScatter(greenacre_data, 1, 2, type=1) # symmetric scatterplot for rows and columns
+#' caScatter(greenacre_data, 1, 2, type=2) # Standard Biplot; 2 plots are returned: one with row-categories vectors displayed, one for columns categories vectors. 
+#' caScatter(greenacre_data, 1, 2, type=3) # scaterplot of row categories with groupings shown by different colors; scatterplot for column categories is also returned
+#' caSscatter(greenacre_data, 1, 2, type=4) # 3D scatterplot with cluster tree for row categories; scatterplot for column categories is also returned.
 #' 
-ca.scatter <- function(data,x=1,y=2,type){
+caScatter <- function(data,x=1,y=2,type){
   numb.dim.cols<-ncol(data)-1
   numb.dim.rows<-nrow(data)-1
   dimensionality <- min(numb.dim.cols, numb.dim.rows)

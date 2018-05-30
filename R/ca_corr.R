@@ -1,6 +1,7 @@
 #' Chart of correlation between rows and columns categories
 #'
-#' This function allows you to calculate the strenght of the correlation between rows and columns of the contingency table. A reference line indicates the threshold above which the correlation can be considered important.
+#' This function allows you to calculate the strenght of the correlation between rows and columns of the contingency table. 
+#' A reference line indicates the threshold above which the correlation can be considered important.
 #' @param data: name of the dataset (must be in dataframe format).
 #' @keywords correlation contingency table
 #' @export
@@ -8,7 +9,7 @@
 #' data(greenacre_data)
 #' ca.corr(greenacre_data)
 #' 
-ca.corr <- function (data){
+caCorr <- function (data){
   mydataasmatrix<-as.matrix(data)
   dataframe.after.ca<- summary(ca(data))
   perf.corr<-(1.0)

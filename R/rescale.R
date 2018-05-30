@@ -10,7 +10,7 @@
 #' @param which: speficy if rows ("rows", default) or columns ("cols") must be grouped.
 #' @param min.v: minimum value of the new scale (0 by default).
 #' @param max.v: maximum value of the new scale (100 by default).
-#' @keywords
+#' @keywords rescale
 #' @export
 #' @examples
 #' data(greenacre_data)

@@ -2,7 +2,7 @@
 #'
 #' This function allows to plot the result of cluster analysis performed on the results of Correspondence Analysis, providing the facility to plot a dendrogram, a silouette plot depicting the "quality" of the clustering solution, and a scatterplot with points coded according to the cluster membership.
 #' 
-#' ca.cluster() provides the facility to perform hierarchical cluster analysis of row and/or column categories on the basis of Correspondence Analysis result.
+#' The function provides the facility to perform hierarchical cluster analysis of row and/or column categories on the basis of Correspondence Analysis result.
 #' The clustering is based on the row and/or colum categories' coordinates from: \cr
 #' (1) a high-dimensional space corresponding to the whole dimensionality of the input contingency table; \cr
 #' (2) a high-dimensional space of dimensionality smaller than the full dimensionality of the input dataset; \cr
@@ -52,18 +52,18 @@
 #' @export
 #' @examples
 #' #data(brand_coffee)
-#' #ca.cluster(brand_coffee, opt.part=FALSE)
+#' #caCluster(brand_coffee, opt.part=FALSE)
 #' #displays a dendrogram of row AND column categories
 #'
-#' #res <- ca.cluster(brand_coffee, opt.part=TRUE)
+#' #res <- caCluster(brand_coffee, opt.part=TRUE)
 #' #displays a dendrogram for row AND column categories; the clustering is based on the CA coordinates from a full high-dimensional space. Rectangles indicating the clusters defined by the optimal partition method (see Details). A silhouette plot, a scatterplot, and a CA scatterplot with indication of cluster membership are also produced (see Details). The cluster membership is stored in the object 'res'.
 #'
-#' #res <- ca.cluster(brand_coffee, which="rows", dim=4, opt.part=TRUE)
+#' #res <- caCluster(brand_coffee, which="rows", dim=4, opt.part=TRUE)
 #' #displays a dendrogram for row categories, with rectangles indicating the clusters defined by the optimal partition method (see Details). The clustering is based on a space of dimensionality 4. A silhouette plot, a scatterplot, and a CA scatterplot with indication of cluster membership are also produced (see Details). The cluster membership is stored in the object 'res'.
 #'
-#' #res <- ca.cluster(brand_coffee, which="rows", dim=c(1,4), opt.part=TRUE)
+#' #res <- caCluster(brand_coffee, which="rows", dim=c(1,4), opt.part=TRUE)
 #' #like the above example, but the clustering is based on the coordinates on the sub-space defined by a pair of dimensions (i.e., 1 and 4).
-ca.cluster <- function(data, which="both", dim=NULL, dist.meth="euclidean", aggl.meth="ward.D2", opt.part=FALSE, opt.part.meth="mean", part=NULL, cex.dndr.lab=0.85, cex.sil.lab=0.75, cex.sctpl.lab=3.5){
+caCluster <- function(data, which="both", dim=NULL, dist.meth="euclidean", aggl.meth="ward.D2", opt.part=FALSE, opt.part.meth="mean", part=NULL, cex.dndr.lab=0.85, cex.sil.lab=0.75, cex.sctpl.lab=3.5){
   dimensionality <- min(ncol(data), nrow(data))-1 # calculate the dimensionality of the input table
   ifelse(is.null(dim), dimens.to.report <- paste0("from a space of dimensionality: ", dimensionality), ifelse(length(dim)==1, dimens.to.report <- paste0("from a space of dimensionality: ", dim), dimens.to.report <- paste0("from the subspace defin. by the ", dim[1], " and ", dim[2], " dim.")))
   ifelse(is.null(dim), sil.plt.title <- paste0("Silhouette plot for CA (dimensionality: ", dimensionality, ")"), ifelse(length(dim)==1, sil.plt.title <- paste0("Silhouette plot for CA (dimensionality: ", dim, ")"), sil.plt.title <- paste0("Silhouette plot for CA (dim. ", dim[1], " + ", dim[2], ")")))

@@ -10,7 +10,8 @@ aver.rule(data)
 \item{data:}{Name of the dataset (must be in dataframe format).}
 }
 \description{
-This function allows you to locate the number of dimensions which are important for CA interpretation, according to the so-called average rule. The reference line showing up in the returned histogram indicates the threshold of an optimal dimensionality of the solution according to the average rule.
+This function allows you to locate the number of dimensions which are important for CA interpretation, according to the so-called average rule. 
+The reference line showing up in the returned histogram indicates the threshold of an optimal dimensionality of the solution according to the average rule.
 }
 \examples{
 data(greenacre_data)
